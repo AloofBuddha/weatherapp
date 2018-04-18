@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import secrets from '../secrets.json';
-import DayForecast from './DayForecast';
+import WeekForecast from './WeekForecast';
 
 
 export default class App extends Component {
@@ -14,15 +14,13 @@ export default class App extends Component {
   }
 
   render() {
-    let firstDay = this.state.forecasts[0];
-
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Weather App</h1>
         </header>
-        <p></p>
-        <DayForecast forecast={firstDay}/>
+        <button type="button">Show Faranheight</button>
+        <WeekForecast forecasts={this.state.forecasts}/>
       </div>
     );
   }
