@@ -14,14 +14,15 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.state.forecasts);
+    let firstDay = this.state.forecasts[0];
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Weather App</h1>
         </header>
         <p></p>
-        <DayForecast />
+        <DayForecast forecast={firstDay}/>
       </div>
     );
   }
@@ -32,10 +33,10 @@ export default class App extends Component {
                       `&client_secret=${secrets.aeris.CLIENT_SECRET}`;
     
     const response = await axios.get(aeris_url);
-    let forecasts = response.data.response[0].periods;
 
-    forecasts = forecasts.map(({ dateTimeISO, minTempF, maxTempF}) => {
-      return { dateTimeISO, minTempF, maxTempF };
+    let forecasts = response.data.response[0].periods;
+    forecasts = forecasts.map(({ dateTimeISO, minTempF, maxTempF, icon}) => {
+      return { dateTimeISO, minTempF, maxTempF, icon };
     });
 
     this.setState( { forecasts });

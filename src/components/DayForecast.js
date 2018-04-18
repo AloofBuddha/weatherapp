@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import './DayForecast.css';
-import icon from './icons/am_pcloudy.png';
 
 export default class DayForecast extends Component {
   render() {
+      const forecast = this.props.forecast;
+      const { dateTimeISO, maxTempF, minTempF, icon} = forecast ? forecast : {};
+      const dateString = dateTimeISO ? dateTimeISO.slice(0, 10) : "";
+      const iconURL  = icon ? process.env.PUBLIC_URL + '/icons/' + icon : "";
+
     return (
       <div className="DayForecast">
-        <p className="DayForecast-intro">
-            2017-06-09        
-        </p>
-        <img src={icon} alt="p cloudy" />
-        <p>High: 27˚F</p>
-        <p>Low: 19˚F</p>
+        <p className="DayForecast-intro">{dateString}</p>
+        <img src={iconURL} alt={icon} />
+        <p>High: {maxTempF}˚F</p>
+        <p>Low: {minTempF}˚F</p>
       </div>
     );
   }

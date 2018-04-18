@@ -1,5 +1,8 @@
 .DayForecast {
-    background-color: red;
+    border: 1px black solid;
+    width: 100px;
+    margin: auto;
+    padding: 4
   }
 
   .DayForecast-intro {
