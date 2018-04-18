@@ -1,5 +1,6 @@
 .DayForecast {
-    border: 1px black solid;
+    border: 1px #222 solid;
+    background-color: white;
     width: 100px;
     margin: auto;
     padding: 4

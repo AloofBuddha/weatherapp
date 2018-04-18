@@ -8,19 +8,29 @@ import WeekForecast from './WeekForecast';
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { forecasts: [] }
+    this.state = { 
+      forecasts: [], 
+      showCelcius: false 
+    }
     this.getForecasts = this.getForecasts.bind(this);
     this.getForecasts();
   }
 
   render() {
+    const { forecasts, showCelcius } = this.state;
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Weather App</h1>
         </header>
-        <button type="button">Show Faranheight</button>
-        <WeekForecast forecasts={this.state.forecasts}/>
+        <WeekForecast forecasts={forecasts} showCelcius={showCelcius}/>
+        <footer className="App-footer">
+          <button type="button" className="App-title" 
+            onClick={() => this.setState({ showCelcius: !showCelcius })}>
+          Show { showCelcius ? "Farenheit" : "Celcius"}
+          </button>
+        </footer>
       </div>
     );
   }
@@ -33,9 +43,6 @@ export default class App extends Component {
     const response = await axios.get(aeris_url);
 
     let forecasts = response.data.response[0].periods;
-    forecasts = forecasts.map(({ dateTimeISO, minTempF, maxTempF, icon}) => {
-      return { dateTimeISO, minTempF, maxTempF, icon };
-    });
 
     this.setState( { forecasts });
   }
