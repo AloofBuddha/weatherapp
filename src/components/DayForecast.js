@@ -25,6 +25,7 @@ export default class DayForecast extends Component {
         <img src={iconURL} alt={icon} />
         <p>{maxTempStr}</p>
         <p>{lowTempStr}</p>
+        
       </div>
     );
   }
