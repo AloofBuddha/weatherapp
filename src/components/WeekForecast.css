@@ -1,7 +1,0 @@
-.WeekForecast {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
-  background-color: #222;
-}
-  

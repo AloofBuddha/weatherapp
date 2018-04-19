@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import secrets from '../secrets.json';
-import WeekForecast from './WeekForecast';
+import secrets from './secrets.json';
+import DayForecast from './components/DayForecast';
 
 
 export default class App extends Component {
@@ -24,7 +24,13 @@ export default class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Weather App</h1>
         </header>
-        <WeekForecast forecasts={forecasts} showCelcius={showCelcius}/>
+        <div className="WeekForecast">
+        {
+          forecasts.map((forecast, index) => (
+            <DayForecast key={index} forecast={forecast} showCelcius={showCelcius}/>
+          ))
+        }
+        </div>
         <footer className="App-footer">
           <button type="button" className="App-title" 
             onClick={() => this.setState({ showCelcius: !showCelcius })}>
