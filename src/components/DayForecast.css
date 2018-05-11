@@ -3,7 +3,10 @@
     background-color: white;
     width: 100px;
     margin: auto;
-    padding: 4
+    padding: 10px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
   }
 
   .DayForecast-intro {
